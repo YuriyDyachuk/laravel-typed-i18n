@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace YuriiDiachuk\LaravelTypedI18n;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use YuriiDiachuk\LaravelTypedI18n\Commands\LaravelTypedI18nCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class LaravelTypedI18nServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('laravel-typed-i18n')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_migration_table_name_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_laravel_typed_i18n_table')
+            ->hasCommand(LaravelTypedI18nCommand::class);
     }
 }

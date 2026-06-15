@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace YuriiDiachuk\LaravelTypedI18n\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelTypedI18nCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-typed-i18n';
 
     public $description = 'My command';
 
