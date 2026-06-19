@@ -2,17 +2,21 @@
 
 All notable changes to `laravel-typed-i18n` will be documented in this file.
 
-## 1.0.1 - 2026-06-19
+## v1.0.0 - 2026-06-19
 
-- Add discoverability keywords (typescript, i18n, translations, types, codegen) for Packagist.
-- Add a `tests-passed` rollup job to CI so branch protection can require a single stable check.
+First public release of **laravel-typed-i18n**.
 
-## 1.0.0 - 2026-06-19
+Turn your Laravel translation files into a TypeScript declaration file, so the frontend gets autocomplete on keys and type-checked params.
 
-First public release.
+### Highlights
 
-- `typed-i18n:generate` command that turns Laravel translation files into a TypeScript declaration file.
-- Parses `{locale}/*.php` groups, `{locale}.json` phrases, and `vendor/{package}/{locale}/*.php` files.
-- Required params per key, with a `count: number` on pluralized strings and case-normalized placeholders.
-- Locale drift detection that reports missing and extra keys against the reference locale.
-- `TranslationSource` interface so the parser can be swapped for other backends later.
+- `typed-i18n:generate` command: `lang files -> TranslationSource -> TranslationKey[] -> .ts`
+- Parses `{locale}/*.php` groups, `{locale}.json` phrases and `vendor/{package}/{locale}/*.php` files
+- Required params per key, with `count: number` on pluralized strings and case-normalized placeholders
+- Locale drift detection against the reference locale
+- `TranslationSource` seam for future non-Laravel backends
+
+### Compatibility
+
+- PHP 8.2+
+- Laravel 11 / 12
