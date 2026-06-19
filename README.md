@@ -12,7 +12,7 @@ way of whatever `trans`/`$t`/`__` helper you already use.
 ## Requirements
 
 - PHP 8.2+
-- Laravel 10, 11 or 12
+- Laravel 11 or 12
 
 ## Installation
 

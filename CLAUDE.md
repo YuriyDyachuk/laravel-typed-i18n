@@ -18,7 +18,7 @@ composer analyse                    # PHPStan level 5 (scans src/ config/)
 composer format                     # Laravel Pint (default preset, formats in place)
 ```
 
-Run `composer format` after any `.php` change. `phpstan-baseline.neon` is empty, so fix new PHPStan errors instead of baselining them. CI: `.github/workflows/run-tests.yml` runs a Laravel 10/11/12 x PHP 8.2-8.4 matrix.
+Run `composer format` after any `.php` change. `phpstan-baseline.neon` is empty, so fix new PHPStan errors instead of baselining them. CI: `.github/workflows/run-tests.yml` runs a Laravel 11/12 x PHP 8.2-8.4 matrix.
 
 ## Architecture
 
@@ -56,7 +56,7 @@ The generated `.ts` contract is the spec, see `tests/fixtures/translations.d.ts`
 
 - PHP 8.2+; domain classes use `declare(strict_types=1)`, constructor property promotion, `readonly`/`final`.
 - Namespace root: `YuriiDiachuk\LaravelTypedI18n\` maps to `src/`.
-- Supports Laravel 10/11/12 (`illuminate/contracts ^10|^11|^12`, testbench `^8|^9|^10`).
+- Supports Laravel 11/12 (`illuminate/contracts ^11|^12`, testbench `^9|^10`).
 - The lang path is always resolved via `lang_path()`, never hardcode `resource_path('lang')` or `base_path('lang')`.
 
 ## Not yet built (intended next steps)
