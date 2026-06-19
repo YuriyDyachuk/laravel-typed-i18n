@@ -60,3 +60,34 @@ it('respects the --locale and --output options', function () {
 
     File::deleteDirectory(dirname($altOutput));
 });
+
+it('passes --check when the generated file is up to date', function () {
+    File::put($this->lang.'/en/messages.php', '<?php return ["welcome" => "Hi :name"];');
+
+    $this->artisan('typed-i18n:generate')->assertSuccessful();
+
+    $this->artisan('typed-i18n:generate', ['--check' => true])
+        ->expectsOutputToContain('up to date')
+        ->assertSuccessful();
+});
+
+it('fails --check when the generated file is out of date', function () {
+    File::put($this->lang.'/en/messages.php', '<?php return ["welcome" => "Hi :name"];');
+    $this->artisan('typed-i18n:generate')->assertSuccessful();
+
+    $before = File::get($this->output);
+
+    File::put($this->lang.'/en/messages.php', '<?php return ["welcome" => "Hi :name", "bye" => "Bye"];');
+
+    $this->artisan('typed-i18n:generate', ['--check' => true])->assertFailed();
+
+    expect(File::get($this->output))->toBe($before);
+});
+
+it('fails --check when the generated file does not exist', function () {
+    File::put($this->lang.'/en/messages.php', '<?php return ["welcome" => "Hi :name"];');
+
+    $this->artisan('typed-i18n:generate', ['--check' => true])->assertFailed();
+
+    expect(File::exists($this->output))->toBeFalse();
+});

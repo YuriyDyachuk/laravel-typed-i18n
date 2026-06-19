@@ -113,8 +113,13 @@ editing it by hand. A few common ways to wire that in:
 
 - Run the command before your frontend build, for example in a `composer` or `npm` script.
 - Add it to a pre-commit hook so the file never lags behind the lang files.
-- Run it in CI and fail the job if `git` reports the file as dirty, which means someone changed a
-  translation without regenerating.
+- Run `typed-i18n:generate --check` in CI. It compares the committed file against freshly
+  generated types and exits non-zero (without writing) when they differ, so a translation
+  changed without regenerating fails the build:
+
+  ```bash
+  php artisan typed-i18n:generate --check
+  ```
 
 Whether you commit the file or generate it on the fly is up to you. Committing it keeps diffs
 visible in review; generating it on the fly keeps it out of version control.
@@ -131,7 +136,7 @@ return [
 ];
 ```
 
-CLI overrides: `--locale=` and `--output=`.
+CLI options: `--locale=`, `--output=`, and `--check` (verify only, never writes).
 
 ## Testing
 
