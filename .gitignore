@@ -30,3 +30,6 @@ phpstan.neon
 testbench.yaml
 /docs
 /coverage
+
+# Claude Code local settings (CLAUDE.md itself stays tracked)
+.claude/settings.local.json

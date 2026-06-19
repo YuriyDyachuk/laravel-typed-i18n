@@ -16,9 +16,9 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "spatie/laravel-package-tools": "^1.16",
-        "illuminate/contracts": "^10.0|^11.0|^12.0"
+        "illuminate/contracts": "^11.0|^12.0"
     },
     "require-dev": {
         "nunomaduro/collision": "^8.0",
@@ -35,14 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "YuriiDiachuk\\LaravelTypedI18n\\": "src/",
-            "YuriiDiachuk\\LaravelTypedI18n\\Database\\Factories\\": "database/factories/"
+            "YuriiDiachuk\\LaravelTypedI18n\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "YuriiDiachuk\\LaravelTypedI18n\\Tests\\": "tests/",
-            "Workbench\\App\\": "workbench/app/"
+            "YuriiDiachuk\\LaravelTypedI18n\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -64,10 +62,7 @@
         "laravel": {
             "providers": [
                 "YuriiDiachuk\\LaravelTypedI18n\\LaravelTypedI18nServiceProvider"
-            ],
-            "aliases": {
-                "LaravelTypedI18n": "YuriiDiachuk\\LaravelTypedI18n\\Facades\\LaravelTypedI18n"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
