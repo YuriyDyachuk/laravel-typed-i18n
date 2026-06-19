@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-typed-i18n` will be documented in this file.
 
+## v1.1.0 - 2026-06-19
+
+### Added
+
+- `typed-i18n:generate --check`: compares the committed declaration file against freshly generated types and exits non-zero **without writing** when they differ or the file is missing. Use it in CI to fail the build when translations changed but the `.d.ts` was not regenerated.
+  
+  ```bash
+  php artisan typed-i18n:generate --check
+  
+  ```
+
+No breaking changes.
+
 ## v1.0.1 - 2026-06-19
 
 Maintenance release.
