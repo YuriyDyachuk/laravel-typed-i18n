@@ -2,7 +2,7 @@
 
 All notable changes to `laravel-typed-i18n` will be documented in this file.
 
-## Unreleased
+## 1.0.0 - 2026-06-19
 
 First public release.
 
