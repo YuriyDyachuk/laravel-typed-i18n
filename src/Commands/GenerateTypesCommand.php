@@ -15,7 +15,8 @@ class GenerateTypesCommand extends Command
 {
     protected $signature = 'typed-i18n:generate
         {--locale= : Reference locale to generate types from (defaults to config)}
-        {--output= : Path to write the .d.ts file to (defaults to config)}';
+        {--output= : Path to write the .d.ts file to (defaults to config)}
+        {--check : Compare the existing file against freshly generated types and fail if they differ, without writing}';
 
     protected $description = 'Generate TypeScript types from Laravel translation files';
 
@@ -39,10 +40,46 @@ class GenerateTypesCommand extends Command
         }
 
         $output = $this->outputPath();
+        $generated = $generator->generate($keys);
+
+        if ($this->option('check')) {
+            return $this->check($output, $generated, $comparator, $source, $reference);
+        }
+
         File::ensureDirectoryExists(dirname($output));
-        File::put($output, $generator->generate($keys));
+        File::put($output, $generated);
 
         $this->components->info('Generated '.count($keys)." keys -> {$output}");
+
+        $this->reportDrift($comparator, $source, $reference);
+
+        return self::SUCCESS;
+    }
+
+    /**
+     * Verify the file on disk matches what we would generate, without writing it.
+     * Used in CI to catch translations that changed without regenerating types.
+     */
+    private function check(
+        string $output,
+        string $generated,
+        LocaleComparator $comparator,
+        TranslationSource $source,
+        string $reference,
+    ): int {
+        if (! File::exists($output)) {
+            $this->components->error("[{$output}] does not exist. Run `php artisan typed-i18n:generate`.");
+
+            return self::FAILURE;
+        }
+
+        if (File::get($output) !== $generated) {
+            $this->components->error("[{$output}] is out of date. Run `php artisan typed-i18n:generate`.");
+
+            return self::FAILURE;
+        }
+
+        $this->components->info("Translation types are up to date: {$output}");
 
         $this->reportDrift($comparator, $source, $reference);
 
