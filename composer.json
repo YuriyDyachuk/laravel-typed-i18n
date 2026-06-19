@@ -4,7 +4,12 @@
     "keywords": [
         "YuriiDiachuk",
         "laravel",
-        "laravel-typed-i18n"
+        "laravel-typed-i18n",
+        "typescript",
+        "i18n",
+        "translations",
+        "types",
+        "codegen"
     ],
     "homepage": "https://github.com/yuriidiachuk/laravel-typed-i18n",
     "license": "MIT",

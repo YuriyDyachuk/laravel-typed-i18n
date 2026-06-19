@@ -2,6 +2,11 @@
 
 All notable changes to `laravel-typed-i18n` will be documented in this file.
 
+## 1.0.1 - 2026-06-19
+
+- Add discoverability keywords (typescript, i18n, translations, types, codegen) for Packagist.
+- Add a `tests-passed` rollup job to CI so branch protection can require a single stable check.
+
 ## 1.0.0 - 2026-06-19
 
 First public release.
